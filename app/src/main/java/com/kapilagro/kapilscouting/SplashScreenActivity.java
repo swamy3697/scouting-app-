@@ -1,6 +1,7 @@
 package com.kapilagro.kapilscouting;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -24,10 +25,21 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Create an Intent to start MainActivity
+                if(!isOnBoardingDone()){
+                    // not done yet so create onboaring screens one activity two pages
+
+                }
+
                 Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(mainIntent);
                 finish(); // Close the splash screen activity
             }
         }, SPLASH_DISPLAY_TIME);
+    }
+
+    private boolean isOnBoardingDone() {
+        SharedPreferences preferences=getSharedPreferences("onBordingPreference",MODE_PRIVATE);
+        return preferences.getBoolean("isOnBoardingDone",false);
+
     }
 }
