@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SplashScreenActivity extends AppCompatActivity {
 
     // Splash screen display time in milliseconds
-    private static final int SPLASH_DISPLAY_TIME = 2000;
+    private static final int SPLASH_DISPLAY_TIME = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,26 +20,46 @@ public class SplashScreenActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
 
-        // Handler to start the MainActivity after the splash screen duration
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Create an Intent to start MainActivity
-                if(!isOnBoardingDone()){
-                    // not done yet so create onboaring screens one activity two pages
-
-                }
-
-                Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(mainIntent);
-                finish(); // Close the splash screen activity
+        // Handler to start the appropriate activity after the splash screen duration
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (!isOnBoardingDone()) {
+                // Start onboarding activity
+                markOnBoardingCompleted();
+                Intent onBoardingIntent = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
+                startActivity(onBoardingIntent);
+                finish();
+                return; // Prevent further execution
             }
+
+            if (userNotLoggedIn()) {
+                // Start login activity
+                Intent loginIntent = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
+                finish();
+                return; // Prevent further execution
+            }
+
+            // If onboarding is done and user is logged in, start the main activity
+            Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
+            startActivity(mainIntent);
+            finish();
         }, SPLASH_DISPLAY_TIME);
     }
 
-    private boolean isOnBoardingDone() {
-        SharedPreferences preferences=getSharedPreferences("onBordingPreference",MODE_PRIVATE);
-        return preferences.getBoolean("isOnBoardingDone",false);
+    private boolean userNotLoggedIn() {
+        // Replace with actual login check logic
+        return true;
+    }
 
+    private boolean isOnBoardingDone() {
+        SharedPreferences preferences = getSharedPreferences("onBordingPreference", MODE_PRIVATE);
+        return preferences.getBoolean("isOnBoardingDone", false);
+    }
+
+    private void markOnBoardingCompleted() {
+        SharedPreferences preferences = getSharedPreferences("onBordingPreference", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isOnBoardingDone", true);
+        editor.apply();
     }
 }
