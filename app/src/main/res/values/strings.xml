@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">kapil scouting</string>
     <string name="app_logo">kapil scouting</string>
+    <string name="help_you_to_improve">Help you to improve efficiency, accuracy,
+engagement, and work balance for employers.</string>
+    <string name="GPS_Access">Let Kapil Agro access your location to find nearby services.</string>
+    <string name="Camera_On">Let Kapil Agro access your location to find nearby services.</string>
 
 </resources>
