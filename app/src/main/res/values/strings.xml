@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">kapil scouting</string>
     <string name="app_logo">kapil scouting</string>
+    <string name="help_you_to_improve">Help you to improve efficiency, accuracy,
+engagement, and work balance for employers.</string>
+    <string name="GPS_Access">Let Kapil Agro access your location to find nearby services.</string>
+    <string name="Camera_On">Let Kapil Agro access your location to find nearby services.</string>
+    <string name="Focus_Close_Accurate_Diagnosis">Good Picture = Good Diagnosis
+Take pictures from close enough and focus on the damaged part or the pest.</string>
 
 </resources>
