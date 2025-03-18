@@ -1,6 +1,11 @@
 package com.kapilagro.kapilscouting;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +20,33 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_on_boarding);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
 
+
+       new Handler(Looper.getMainLooper()).postDelayed(()->{
+           if (userNotLoggedIn()) {
+               // Start login activity
+               Intent loginIntent = new Intent(OnBoardingActivity.this, LoginActivity.class);
+               startActivity(loginIntent);
+               finish();
+               return; // Prevent further execution
+           }
+           else{
+               Intent mainIntent=new Intent(OnBoardingActivity.this,MainActivity.class);
+               startActivity(mainIntent);
+               finish();
+           }
+
+       },50000);
+
+
+
+
+
+
+    }
+
+    private boolean userNotLoggedIn() {
+        return true;
     }
 }

@@ -1,19 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnBoardingActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="onBoarding screen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Attendance Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_attendance"
+        android:layout_width="160dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="116dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFF2E0"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon_attendance"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_user_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_attendance"
+                android:text="Attendance management"
+                android:fontFamily="@font/roboto"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Employee Progress Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_employee"
+        android:layout_width="151dp"
+        android:layout_height="196dp"
+        android:layout_marginStart="16dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toEndOf="@id/card_attendance"
+        app:layout_constraintTop_toTopOf="@id/card_attendance">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#BAFFC9"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon_employee"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_finance_dollar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_employee"
+                android:fontFamily="@font/roboto"
+                android:text="Employee Progress"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Workflow Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_workflow"
+        android:layout_width="160dp"
+        android:layout_height="196dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="@id/card_attendance"
+        app:layout_constraintTop_toBottomOf="@id/card_attendance">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E6CFFF"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon_workflow"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_performance_chart" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_workflow"
+                android:text="Increase Your Workflow"
+                android:fontFamily="@font/roboto"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Report Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_report"
+        android:layout_width="158dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toEndOf="@id/card_workflow"
+        app:layout_constraintTop_toBottomOf="@id/card_employee">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F0F0F0"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/icon_report"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_lightning_boost" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_report"
+                android:text="Enhanced Data Report"
+                android:fontFamily="@font/roboto"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Header Text -->
+    <TextView
+        android:id="@+id/text_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="17dp"
+        android:text="Reduce the workloads"
+        android:fontFamily="@font/roboto"
+        android:textColor="#212121"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/card_workflow"
+        app:layout_constraintTop_toBottomOf="@id/card_workflow" />
+
+    <!-- Subheader Text -->
+    <TextView
+        android:id="@+id/text_subheader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/help_you_to_improve"
+        android:textColor="#757575"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/text_header"
+        app:layout_constraintTop_toBottomOf="@id/text_header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

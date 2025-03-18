@@ -28,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Intent onBoardingIntent = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
                 startActivity(onBoardingIntent);
                 finish();
-                return; // Prevent further execution
+                return;
             }
 
             if (userNotLoggedIn()) {
@@ -52,8 +52,10 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private boolean isOnBoardingDone() {
-        SharedPreferences preferences = getSharedPreferences("onBordingPreference", MODE_PRIVATE);
-        return preferences.getBoolean("isOnBoardingDone", false);
+        return false;
+        //SharedPreferences preferences = getSharedPreferences("onBordingPreference", MODE_PRIVATE);
+        //return preferences.getBoolean("isOnBoardingDone", false);
+
     }
 
     private void markOnBoardingCompleted() {
