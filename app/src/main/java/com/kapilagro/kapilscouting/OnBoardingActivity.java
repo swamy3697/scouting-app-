@@ -20,12 +20,11 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_on_boarding);
-
-
-
        new Handler(Looper.getMainLooper()).postDelayed(()->{
            if (userNotLoggedIn()) {
+
                // Start login activity
+
                Intent loginIntent = new Intent(OnBoardingActivity.this, LoginActivity.class);
                startActivity(loginIntent);
                finish();
@@ -35,15 +34,10 @@ public class OnBoardingActivity extends AppCompatActivity {
                Intent mainIntent=new Intent(OnBoardingActivity.this,MainActivity.class);
                startActivity(mainIntent);
                finish();
+
            }
 
-       },50000);
-
-
-
-
-
-
+       },2000);
     }
 
     private boolean userNotLoggedIn() {
