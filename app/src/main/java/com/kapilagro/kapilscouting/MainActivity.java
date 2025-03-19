@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
         edit.apply();
 
 
-
-
-
-        
-
     }
 
     private boolean isuserLoggedIn() {
