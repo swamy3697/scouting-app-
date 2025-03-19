@@ -1,0 +1,8 @@
+<resources>
+    <!-- Custom style for TextInputLayout -->
+    <style name="CustomTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/primary</item>  <!-- Focused border color -->
+        <item name="hintTextColor">@color/primary_gray</item>  <!-- Hint text color -->
+         <!-- Hint color inside the box -->
+    </style>
+</resources>
