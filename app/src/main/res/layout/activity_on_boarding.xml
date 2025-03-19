@@ -31,7 +31,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_user_profile" />
+                android:src="@drawable/ic_icon_user" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_finance_dollar" />
+                android:src="@drawable/ic_icon_rupee" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_performance_chart" />
+                android:src="@drawable/ic_icon_growth" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -140,7 +140,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_lightning_boost" />
+                android:src="@drawable/ic_icon_lightning" />
 
             <TextView
                 android:layout_width="wrap_content"
