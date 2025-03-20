@@ -1,6 +1,7 @@
 package com.kapilagro.kapilscouting;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,8 +21,13 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_on_boarding);
+        SharedPreferences preferences=getSharedPreferences("onBordingPreference",MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.putBoolean("isOnBoardingDone",true);
+        editor.apply();
+
        new Handler(Looper.getMainLooper()).postDelayed(()->{
-           if (userNotLoggedIn()) {
+           if (!isUserLoggedIn()) {
 
                // Start login activity
 
@@ -40,7 +46,11 @@ public class OnBoardingActivity extends AppCompatActivity {
        },2000);
     }
 
-    private boolean userNotLoggedIn() {
-        return true;
+    private boolean isUserLoggedIn() {
+
+        SharedPreferences sharedPreferences = getSharedPreferences("loginpreference", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("isUserLoggedIn", false);
+
+
     }
 }
