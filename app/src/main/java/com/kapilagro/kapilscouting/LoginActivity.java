@@ -3,6 +3,7 @@ package com.kapilagro.kapilscouting;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
     private ViewFlipper viewFlipper;
 
     // Welcome Screen Views
@@ -48,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
+
+        Log.d(TAG, "LoginActivity started");
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -55,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Initialize ViewFlipper
-        viewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
+        viewFlipper = findViewById(R.id.view_flipper);
 
         // Initialize welcome screen views
         btnLogin = findViewById(R.id.btn_login);
@@ -67,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showLoginForm() {
-        // Inflate login form layout if not already inflated
         if (viewFlipper.getChildCount() < 2) {
             View loginView = getLayoutInflater().inflate(R.layout.activity_login_form, null);
             viewFlipper.addView(loginView);
@@ -91,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showSignupForm() {
-        // Inflate signup form layout if not already inflated
         if (viewFlipper.getChildCount() < 3) {
             View signupView = getLayoutInflater().inflate(R.layout.activity_signup_form, null);
             viewFlipper.addView(signupView);
@@ -119,46 +122,44 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleLogin() {
-        String email = etEmail.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
+        String email = etEmail.getText() != null ? etEmail.getText().toString().trim() : "";
+        String password = etPassword.getText() != null ? etPassword.getText().toString().trim() : "";
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Implement your login logic here
-        // For example, validate credentials, call API, etc.
-        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-        if(isUserValid()){
-            Intent mainIntent=new Intent(this,MainActivity.class);
-            startActivity(mainIntent);
-            SharedPreferences sharedPreferences = getSharedPreferences("loginpreference", MODE_PRIVATE);
-            SharedPreferences.Editor edit=sharedPreferences.edit();
-            edit.putBoolean("isUserLoggedIn",true);
-            edit.apply();
+        // Validate credentials (simplified for testing)
+        if (validateCredentials(email, password)) {
+            Log.d(TAG, "Login successful - marking user as logged in");
 
+            // Save login status
+            SharedPreferences sharedPreferences = getSharedPreferences("loginpreference", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isUserLoggedIn", true);
+            editor.apply();
+
+            // Navigate to MainActivity
+            Intent mainIntent = new Intent(this, MainActivity.class);
+            startActivity(mainIntent);
             finish();
-        }
-        else{
+        } else {
             Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
         }
-
-        // Navigate to main activity or dashboard
-        // Intent intent = new Intent(this, MainActivity.class);
-        // startActivity(intent);
-        // finish();
     }
 
-    private boolean isUserValid() {
-        return true;
+    // For testing, we'll accept any non-empty credentials
+    private boolean validateCredentials(String email, String password) {
+        // Replace with actual validation logic in production
+        return !email.isEmpty() && !password.isEmpty();
     }
 
     private void handleSignup() {
-        String name = etName.getText().toString().trim();
-        String email = etEmailSignup.getText().toString().trim();
-        String password = etPasswordSignup.getText().toString().trim();
-        String confirmPassword = etConfirmPassword.getText().toString().trim();
+        String name = etName.getText() != null ? etName.getText().toString().trim() : "";
+        String email = etEmailSignup.getText() != null ? etEmailSignup.getText().toString().trim() : "";
+        String password = etPasswordSignup.getText() != null ? etPasswordSignup.getText().toString().trim() : "";
+        String confirmPassword = etConfirmPassword.getText() != null ? etConfirmPassword.getText().toString().trim() : "";
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -170,17 +171,12 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Implement your signup logic here
-        // For example, validate input, call API, etc.
+        // Simulate successful signup
         Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show();
-
-
-        // Navigate to login form
         showLoginForm();
     }
 
     private void handleForgotPassword() {
-        // Implement forgot password functionality
         Toast.makeText(this, "Forgot password functionality", Toast.LENGTH_SHORT).show();
     }
 }
