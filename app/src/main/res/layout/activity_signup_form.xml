@@ -14,9 +14,13 @@
         android:id="@+id/btn_back_signup"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Back"
-        android:src="@android:drawable/ic_menu_revert"
+        android:src="@drawable/baseline_arrow_back_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Create an account"
+        android:fontFamily="@font/roboto"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -42,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Full Name"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_signup_title"
@@ -51,6 +57,7 @@
             android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Email"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_name"
@@ -83,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Password"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_email_signup"
@@ -104,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Confirm Password"
+        android:fontFamily="@font/roboto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_password_signup"
@@ -121,6 +131,7 @@
     <Button
         android:id="@+id/btn_signup_submit"
         android:layout_width="0dp"
+        android:fontFamily="@font/roboto"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="#489E38"
@@ -147,6 +158,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
             android:text="Already have an account? "
             android:textColor="@android:color/black" />
 

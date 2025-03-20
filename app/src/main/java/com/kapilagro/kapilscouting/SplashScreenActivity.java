@@ -48,13 +48,14 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private boolean userNotLoggedIn() {
         // Replace with actual login check logic
-        return true;
+        SharedPreferences sharedPreferences = getSharedPreferences("loginpreference", MODE_PRIVATE);
+        return !sharedPreferences.getBoolean("isUserLoggedIn", false);
     }
 
     private boolean isOnBoardingDone() {
-        return false;
-        //SharedPreferences preferences = getSharedPreferences("onBordingPreference", MODE_PRIVATE);
-        //return preferences.getBoolean("isOnBoardingDone", false);
+
+        SharedPreferences preferences = getSharedPreferences("onBordingPreference", MODE_PRIVATE);
+        return preferences.getBoolean("isOnBoardingDone", false);
 
     }
 

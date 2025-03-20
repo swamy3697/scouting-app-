@@ -1,5 +1,7 @@
 package com.kapilagro.kapilscouting;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -128,11 +130,28 @@ public class LoginActivity extends AppCompatActivity {
         // Implement your login logic here
         // For example, validate credentials, call API, etc.
         Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+        if(isUserValid()){
+            Intent mainIntent=new Intent(this,MainActivity.class);
+            startActivity(mainIntent);
+            SharedPreferences sharedPreferences = getSharedPreferences("loginpreference", MODE_PRIVATE);
+            SharedPreferences.Editor edit=sharedPreferences.edit();
+            edit.putBoolean("isUserLoggedIn",true);
+            edit.apply();
+
+            finish();
+        }
+        else{
+            Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+        }
 
         // Navigate to main activity or dashboard
         // Intent intent = new Intent(this, MainActivity.class);
         // startActivity(intent);
         // finish();
+    }
+
+    private boolean isUserValid() {
+        return true;
     }
 
     private void handleSignup() {
@@ -154,6 +173,7 @@ public class LoginActivity extends AppCompatActivity {
         // Implement your signup logic here
         // For example, validate input, call API, etc.
         Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show();
+
 
         // Navigate to login form
         showLoginForm();
