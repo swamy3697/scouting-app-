@@ -13,26 +13,32 @@
         android:theme="@style/Theme.KapilScouting"
         tools:targetApi="31">
         <activity
-            android:name=".UsageActivity"
+            android:name=".WeedControlActivity"
             android:exported="false" />
         <activity
-            android:name=".AdviceActivity"
+            android:name=".YieldActivity"
             android:exported="false" />
         <activity
-            android:name=".ScoutingActivity"
+            android:name=".HarvestActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".FuelActivity"
             android:exported="false" />
         <activity
-            android:name=".OnBoardingActivity"
+            android:name=".SowingActivity"
             android:exported="false" />
         <activity
-            android:name=".OnBoarding"
+            android:name=".SprayingActivity"
             android:exported="false" />
+
+        <activity android:name=".LoginActivity"
+            android:exported="false"/>
+        <activity android:name=".OnBoardingActivity"
+            android:exported="false"/>
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

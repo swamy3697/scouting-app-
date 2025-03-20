@@ -6,46 +6,24 @@
     android:background="#196F3D"
     android:orientation="vertical">
 
-    <!-- Header Section -->
+    <!-- Header Section (without app name and notification icon) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
         android:paddingVertical="12dp"
-        android:layout_marginTop="20dp"
         android:background="#196F3D">
-
-        <TextView
-            android:id="@+id/app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kapil Agro"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/notification_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_notification"
-            android:contentDescription="Notifications"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/hello_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="Hello"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_name" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/user_name"
@@ -146,6 +124,7 @@
 
                     <!-- Spraying Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btn_spraying"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -189,8 +168,10 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
+                    <!-- Rest of the task cards remain unchanged -->
                     <!-- Sowing Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btn_sowing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -236,6 +217,7 @@
 
                     <!-- Fuel Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btn_fuel"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -281,6 +263,7 @@
 
                     <!-- Harvest Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btn_harvest"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -326,6 +309,7 @@
 
                     <!-- Yield Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btn_yield"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -371,6 +355,7 @@
 
                     <!-- Weed Control Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/btn_weed_control"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"

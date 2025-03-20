@@ -43,7 +43,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
            }
 
-       },2000);
+       },5000);
     }
 
     private boolean isUserLoggedIn() {

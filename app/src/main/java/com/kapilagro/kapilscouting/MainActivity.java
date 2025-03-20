@@ -3,8 +3,10 @@ package com.kapilagro.kapilscouting;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -37,11 +39,22 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+
+        // Add this after setContentView in your MainActivity.java
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
+        }
+
+
         // Initialize bottom navigation
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setItemRippleColor(null); // Reset default
         bottomNavigationView.setItemRippleColor(ColorStateList.valueOf(Color.parseColor("#81F574")));
+
+       // bottomNavigationView.setItemRippleColor(null);
+
 
         int[][] states = new int[][] {
                 new int[] { android.R.attr.state_checked }, // Selected
@@ -50,17 +63,13 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
         int[] colors = new int[] {
                 ContextCompat.getColor(this, R.color.primary),
-                ContextCompat.getColor(this, R.color.ic_launcher_background)
+                ContextCompat.getColor(this, R.color.white)
         };
 
         ColorStateList colorStateList = new ColorStateList(states, colors);
 
         bottomNavigationView.setItemIconTintList(colorStateList);
         bottomNavigationView.setItemTextColor(colorStateList);
-
-
-
-
 
 
 
