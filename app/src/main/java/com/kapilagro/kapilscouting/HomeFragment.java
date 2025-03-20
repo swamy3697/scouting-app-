@@ -1,5 +1,6 @@
 package com.kapilagro.kapilscouting;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.card.MaterialCardView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,12 +56,60 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+
+        MaterialCardView btnSpraying = view.findViewById(R.id.btn_spraying);
+        btnSpraying.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SprayingActivity.class);
+            startActivity(intent);
+        });
+
+        MaterialCardView btnSowing = view.findViewById(R.id.btn_sowing);
+        btnSowing.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SowingActivity.class);
+            startActivity(intent);
+        });
+
+        MaterialCardView btnFuel = view.findViewById(R.id.btn_fuel);
+        btnFuel.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), FuelActivity.class);
+            startActivity(intent);
+        });
+
+        MaterialCardView btnHarvest = view.findViewById(R.id.btn_harvest);
+        btnHarvest.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), HarvestActivity.class);
+            startActivity(intent);
+        });
+
+        MaterialCardView btnYield = view.findViewById(R.id.btn_yield);
+        btnYield.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), YieldActivity.class);
+            startActivity(intent);
+        });
+
+
+        MaterialCardView btnWeedControl = view.findViewById(R.id.btn_weed_control);
+        btnWeedControl.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), WeedControlActivity.class);
+            startActivity(intent);
+        });
+
+
+
+
+
+
+
+        return view;
     }
 }

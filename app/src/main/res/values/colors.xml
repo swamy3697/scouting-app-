@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary_almond_cream">#FCF3E8</color>
 
-    <!-- Extracted Colors from SVG -->
-    <color name="primary_green_dark">#15A704</color>
-    <color name="primary_blue">#17A1FA</color>
-    <color name="primary_green_light">#21C40F</color>
-    <color name="top_nav">#28592E</color>
-    <color name="secondary_green_bright">#36DB23</color>
+    <!-- Primary colors -->
     <color name="primary">#489E3B</color>
-    <color name="secondary_green_neon">#55EB44</color>
-    <color name="secondary_green_muted">#5C8C54</color>
+    <color name="primary_variant">#28592E</color>
+    <color name="primary_green_dark">#15A704</color>
+    <color name="primary_green_light">#21C40F</color>
+    <color name="primary_blue">#17A1FA</color>
+    <color name="primary_almond_cream">#29FCF3E8</color>
     <color name="primary_gray">#818181</color>
+
+    <!-- Secondary colors -->
+    <color name="secondary">#36DB23</color>
+    <color name="secondary_variant">#55EB44</color>
+    <color name="secondary_green_muted">#5C8C54</color>
     <color name="secondary_green_light">#81F574</color>
     <color name="secondary_green_pastel">#B9FCB1</color>
     <color name="secondary_gray_light">#C8C8C8</color>
-    <color name="secondary_white_soft">#F6FFF5</color>
+    <color name="secondary_white_soft">#40F6FFF5</color>
+
+    <!-- System colors -->
+    <color name="top_nav">@color/primary_variant</color>
+    <color name="ic_launcher_background">@color/white</color>
+
+    <!-- Status colors -->
+    <color name="success">@color/primary_green_light</color>
+    <color name="info">@color/primary_blue</color>
+    <color name="warning">#FFA500</color>  <!-- Added warning color -->
+    <color name="error">#FF5252</color>    <!-- Added error color -->
 </resources>
