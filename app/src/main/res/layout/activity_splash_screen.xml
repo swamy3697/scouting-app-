@@ -9,26 +9,26 @@
 
     <ImageView
         android:id="@+id/splashImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/kapil_agro_logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:contentDescription="@string/app_logo"
+        android:src="@drawable/kapil_agro_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
         android:text="@string/app_name"
         android:textSize="24sp"
-        android:fontFamily="@font/roboto"
-
+        android:textFontWeight="900"
         android:textStyle="bold"
-        android:layout_marginTop="24dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/splashImageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

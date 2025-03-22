@@ -53,6 +53,31 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         bottomNavigationView.setItemRippleColor(null); // Reset default
         bottomNavigationView.setItemRippleColor(ColorStateList.valueOf(Color.parseColor("#81F574")));
 
+        MenuItem adviceItem=bottomNavigationView.getMenu().findItem(R.id.navigation_advice);
+        if(adviceItem!=null){
+            android.graphics.drawable.Drawable originalIcon = adviceItem.getIcon().mutate();
+            float scaleFactor = 1.3f; // Adjust this value to control how much larger the icon should be
+
+            int width = originalIcon.getIntrinsicWidth();
+            int height = originalIcon.getIntrinsicHeight();
+
+            // Create a layer drawable to scale the icon
+            android.graphics.drawable.LayerDrawable layerDrawable = new android.graphics.drawable.LayerDrawable(
+                    new android.graphics.drawable.Drawable[] { originalIcon });
+
+            // Calculate the padding required to scale the icon
+            int horizontalPadding = (int) (-width * (scaleFactor - 1) / 2);
+            int verticalPadding = (int) (-height * (scaleFactor - 1) / 2);
+
+            layerDrawable.setLayerInset(0, horizontalPadding, verticalPadding,
+                    horizontalPadding, verticalPadding);
+
+            adviceItem.setIcon(layerDrawable);
+        }
+
+
+
+
        // bottomNavigationView.setItemRippleColor(null);
 
 
@@ -65,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 ContextCompat.getColor(this, R.color.primary),
                 ContextCompat.getColor(this, R.color.white)
         };
-
         ColorStateList colorStateList = new ColorStateList(states, colors);
 
         bottomNavigationView.setItemIconTintList(colorStateList);
