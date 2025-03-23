@@ -1,115 +1,99 @@
-package com.kapilagro.kapilscouting;
+package com.kapilagro.kapilscouting
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.google.android.material.card.MaterialCardView;
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.google.android.material.card.MaterialCardView
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
+ * A simple [Fragment] subclass.
+ * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+class HomeFragment : Fragment() {
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private var param1: String? = null
+    private var param2: String? = null
 
-    public HomeFragment() {
-        // Required empty public constructor
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        val btnSpraying: MaterialCardView = view.findViewById(R.id.btn_spraying)
+        btnSpraying.setOnClickListener {
+            val intent = Intent(activity, SprayingActivity::class.java)
+            startActivity(intent)
         }
 
+        val btnSowing: MaterialCardView = view.findViewById(R.id.btn_sowing)
+        btnSowing.setOnClickListener {
+            val intent = Intent(activity, SowingActivity::class.java)
+            startActivity(intent)
+        }
 
+        val btnFuel: MaterialCardView = view.findViewById(R.id.btn_fuel)
+        btnFuel.setOnClickListener {
+            val intent = Intent(activity, FuelActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnHarvest: MaterialCardView = view.findViewById(R.id.btn_harvest)
+        btnHarvest.setOnClickListener {
+            val intent = Intent(activity, HarvestActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnYield: MaterialCardView = view.findViewById(R.id.btn_yield)
+        btnYield.setOnClickListener {
+            val intent = Intent(activity, YieldActivity::class.java)
+            startActivity(intent)
+        }
+
+        val btnWeedControl: MaterialCardView = view.findViewById(R.id.btn_weed_control)
+        btnWeedControl.setOnClickListener {
+            val intent = Intent(activity, WeedControlActivity::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+    companion object {
+        // TODO: Rename parameter arguments, choose names that match
+        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private const val ARG_PARAM1 = "param1"
+        private const val ARG_PARAM2 = "param2"
 
-
-        MaterialCardView btnSpraying = view.findViewById(R.id.btn_spraying);
-        btnSpraying.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), SprayingActivity.class);
-            startActivity(intent);
-        });
-
-        MaterialCardView btnSowing = view.findViewById(R.id.btn_sowing);
-        btnSowing.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), SowingActivity.class);
-            startActivity(intent);
-        });
-
-        MaterialCardView btnFuel = view.findViewById(R.id.btn_fuel);
-        btnFuel.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), FuelActivity.class);
-            startActivity(intent);
-        });
-
-        MaterialCardView btnHarvest = view.findViewById(R.id.btn_harvest);
-        btnHarvest.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), HarvestActivity.class);
-            startActivity(intent);
-        });
-
-        MaterialCardView btnYield = view.findViewById(R.id.btn_yield);
-        btnYield.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), YieldActivity.class);
-            startActivity(intent);
-        });
-
-
-        MaterialCardView btnWeedControl = view.findViewById(R.id.btn_weed_control);
-        btnWeedControl.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), WeedControlActivity.class);
-            startActivity(intent);
-        });
-
-
-
-
-
-
-
-        return view;
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment HomeFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        fun newInstance(param1: String, param2: String) =
+            HomeFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 }

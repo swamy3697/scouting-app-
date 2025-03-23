@@ -1,107 +1,84 @@
-package com.kapilagro.kapilscouting;
+package com.kapilagro.kapilscouting
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.google.android.material.button.MaterialButton
 
-import androidx.fragment.app.Fragment;
+class SettingsFragment : Fragment() {
+    private var profileName: TextView? = null
+    private var profileRole: TextView? = null
+    private var editProfileButton: MaterialButton? = null
+    private var logoutButton: MaterialButton? = null
+    private var shareOption: LinearLayout? = null
+    private var settingsOption: LinearLayout? = null
+    private var helpSupportOption: LinearLayout? = null
+    private var aboutCompanyOption: LinearLayout? = null
+    private val btnBack: ImageView? = null
 
-import com.google.android.material.button.MaterialButton;
-
-public class SettingsFragment extends Fragment {
-
-    private TextView profileName;
-    private TextView profileRole;
-    private MaterialButton editProfileButton;
-    private MaterialButton logoutButton;
-    private LinearLayout shareOption;
-    private LinearLayout settingsOption;
-    private LinearLayout helpSupportOption;
-    private LinearLayout aboutCompanyOption;
-    private ImageView btnBack;
-
-    public SettingsFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        val view = inflater.inflate(R.layout.fragment_settings, container, false)
 
         // Initialize views
-        profileName = view.findViewById(R.id.profile_name);
-        profileRole = view.findViewById(R.id.profile_role);
-        editProfileButton = view.findViewById(R.id.edit_profile_button);
-        logoutButton = view.findViewById(R.id.logout_button);
-        shareOption = view.findViewById(R.id.share_option);
-        settingsOption = view.findViewById(R.id.settings_option);
-        helpSupportOption = view.findViewById(R.id.help_support_option);
-        aboutCompanyOption = view.findViewById(R.id.about_company_option);
-
-
+        profileName = view.findViewById<TextView?>(R.id.profile_name)
+        profileRole = view.findViewById<TextView?>(R.id.profile_role)
+        editProfileButton = view.findViewById<MaterialButton>(R.id.edit_profile_button)
+        logoutButton = view.findViewById<MaterialButton>(R.id.logout_button)
+        shareOption = view.findViewById<LinearLayout>(R.id.share_option)
+        settingsOption = view.findViewById<LinearLayout>(R.id.settings_option)
+        helpSupportOption = view.findViewById<LinearLayout>(R.id.help_support_option)
+        aboutCompanyOption = view.findViewById<LinearLayout>(R.id.about_company_option)
 
 
         // Set up click listeners
-        editProfileButton.setOnClickListener(v -> {
+        editProfileButton!!.setOnClickListener(View.OnClickListener { v: View? ->
             // Handle edit profile click
-            Toast.makeText(getContext(), "Edit Profile clicked", Toast.LENGTH_SHORT).show();
-            // Launch profile edit activity
-            // Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-            // startActivity(intent);
-        });
+            Toast.makeText(getContext(), "Edit Profile clicked", Toast.LENGTH_SHORT).show()
+        })
 
-        shareOption.setOnClickListener(v -> {
+        shareOption!!.setOnClickListener(View.OnClickListener { v: View? ->
             // Handle share option click
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Kapil Agro");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out Kapil Agro app: https://play.google.com/store/apps/details?id=com.kapilagro.kapilscouting");
-            startActivity(Intent.createChooser(shareIntent, "Share via"));
-        });
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.setType("text/plain")
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Kapil Agro")
+            shareIntent.putExtra(
+                Intent.EXTRA_TEXT,
+                "Check out Kapil Agro app: https://play.google.com/store/apps/details?id=com.kapilagro.kapilscouting"
+            )
+            startActivity(Intent.createChooser(shareIntent, "Share via"))
+        })
 
-        settingsOption.setOnClickListener(v -> {
+        settingsOption!!.setOnClickListener(View.OnClickListener { v: View? ->
             // Handle settings option click
-            Toast.makeText(getContext(), "Settings clicked", Toast.LENGTH_SHORT).show();
-            // Launch app settings
-            // Intent intent = new Intent(getActivity(), AppSettingsActivity.class);
-            // startActivity(intent);
-        });
+            Toast.makeText(getContext(), "Settings clicked", Toast.LENGTH_SHORT).show()
+        })
 
-        helpSupportOption.setOnClickListener(v -> {
+        helpSupportOption!!.setOnClickListener(View.OnClickListener { v: View? ->
             // Handle help and support option click
-            Toast.makeText(getContext(), "Help and Support clicked", Toast.LENGTH_SHORT).show();
-            // Launch help and support
-            // Intent intent = new Intent(getActivity(), HelpSupportActivity.class);
-            // startActivity(intent);
-        });
+            Toast.makeText(getContext(), "Help and Support clicked", Toast.LENGTH_SHORT).show()
+        })
 
-        aboutCompanyOption.setOnClickListener(v -> {
+        aboutCompanyOption!!.setOnClickListener(View.OnClickListener { v: View? ->
             // Handle about company option click
-            Toast.makeText(getContext(), "About Company clicked", Toast.LENGTH_SHORT).show();
-            // Launch about company
-            // Intent intent = new Intent(getActivity(), AboutCompanyActivity.class);
-            // startActivity(intent);
-        });
+            Toast.makeText(getContext(), "About Company clicked", Toast.LENGTH_SHORT).show()
+        })
 
-        logoutButton.setOnClickListener(v -> {
+        logoutButton!!.setOnClickListener(View.OnClickListener { v: View? ->
             // Handle logout click
-            Toast.makeText(getContext(), "Logout clicked", Toast.LENGTH_SHORT).show();
-            // Perform logout operations
-            // Clear user session
-            // Redirect to login screen
-            // Intent intent = new Intent(getActivity(), LoginActivity.class);
-            // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            // startActivity(intent);
-        });
+            Toast.makeText(getContext(), "Logout clicked", Toast.LENGTH_SHORT).show()
+        })
 
-        return view;
+        return view
     }
 }
