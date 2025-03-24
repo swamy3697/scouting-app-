@@ -11,6 +11,14 @@
         <item name="cornerSizeTopLeft">16dp</item>
         <item name="cornerSizeTopRight">16dp</item>
     </style>
+
+    <style name="imageCornors" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5dp</item>
+
+    </style>
+
+
     <style name="TopRoundedCorners" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">20dp</item>

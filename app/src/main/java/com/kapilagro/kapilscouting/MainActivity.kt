@@ -13,12 +13,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
-
     private lateinit var bottomNavigationView: BottomNavigationView
     private var isUserLoggedIn: Boolean = false
-
     // Define your fragments
     private val homeFragment = HomeFragment()
     private val scoutFragment = ScoutFragment()
@@ -68,6 +65,37 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             it.icon = layerDrawable
         }
 
+
+
+        val settingsItem = bottomNavigationView.menu.findItem(R.id.navigation_settings)
+        settingsItem?.let {
+            val originalIcon = it.icon?.mutate()
+            val scaleFactor = 1.1f // Adjust this value to control how much larger the icon should be
+
+            val width = originalIcon?.intrinsicWidth
+            val height = originalIcon?.intrinsicHeight
+
+            // Create a layer drawable to scale the icon
+            val layerDrawable = android.graphics.drawable.LayerDrawable(
+                arrayOf(originalIcon)
+            )
+
+            // Calculate the padding required to scale the icon
+            val horizontalPadding = width.let { it1 -> (-it1!! * (scaleFactor - 1) / 2).toInt() }
+            val verticalPadding = height.let { it1 -> (-it1!! * (scaleFactor - 1) / 2).toInt() }
+
+            layerDrawable.setLayerInset(
+                0, horizontalPadding, verticalPadding,
+                horizontalPadding, verticalPadding
+            )
+
+            it.icon = layerDrawable
+        }
+
+
+
+
+
         val states = arrayOf(
             intArrayOf(android.R.attr.state_checked), // Selected
             intArrayOf(-android.R.attr.state_checked)  // Unselected
@@ -97,7 +125,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         // Implement your login check logic here
         return false
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val fragment: Fragment? = when (item.itemId) {
             R.id.navigation_home -> homeFragment
@@ -107,10 +134,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             R.id.navigation_usage -> usageFragment
             else -> null
         }
-
         return loadFragment(fragment)
     }
-
     private fun loadFragment(fragment: Fragment?): Boolean {
         if (fragment != null) {
             supportFragmentManager

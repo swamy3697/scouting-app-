@@ -60,7 +60,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <ImageView
+                <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/weather_icon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

@@ -9,6 +9,7 @@ activity = "1.9.3"
 constraintlayout = "2.2.1"
 kotlin = "2.1.20"
 coreKtx = "1.15.0"
+gifImageView = "1.2.27"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -20,7 +21,10 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 
+gifImageView = { module = "pl.droidsonroids.gif:android-gif-drawable", version.ref = "gifImageView" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
 
